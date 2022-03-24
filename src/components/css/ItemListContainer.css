@@ -1,0 +1,15 @@
+.productosTitulo {
+    margin-left: 1rem;
+}
+
+.card {
+    width: 14rem;
+    text-align: center;
+    margin: 1rem;
+    border-width: 0.2rem;
+    border-radius: 0.5rem;
+}
+
+img {
+    margin: 0.5rem;
+}
