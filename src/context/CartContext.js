@@ -18,11 +18,33 @@ const CartProvider = ({children}) => {
         setCartProducts([])
     }
 
+    const totalPrice = () => {
+        let total = 0
+
+        cartProducts.map ( (cartProduct)  => {
+            total = cartProduct.price * cartProduct.quantity + total
+        })
+
+        return total
+    }
+
+    const totalQuantity = () => {
+        let totalQ = 0
+
+        cartProducts.map ( (cartProduct)  => {
+            totalQ = cartProduct.quantity + totalQ
+        })
+
+        return totalQ
+    }
+
     const data = {
         cartProducts,
         addProductToCart,
         deleteProduct,
-        clear
+        clear,
+        totalPrice,
+        totalQuantity
     }
 
     return (
