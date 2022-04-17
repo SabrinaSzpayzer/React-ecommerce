@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import Item from './Item'
-import mockProducts from '../utils/mockProducts'
+import {collection, getDocs} from 'firebase/firestore'
+import db from '../utils/firebase'
 
 function ItemList () {
     const [products, setProducts] = useState([])
 
-    const getProducts = () => {
-        return new Promise ((resolve, reject) => {
-            resolve(mockProducts)      
+    const getProducts = async () => {
+        const itemsCollection = collection(db, 'products')
+        const productsSnapshot = await getDocs(itemsCollection)
+        const productList = productsSnapshot.docs.map((doc) => {
+            let product = doc.data()
+            product.id = doc.id
+            return product
         })
+        return productList
     }
 
     useEffect ( () => {
