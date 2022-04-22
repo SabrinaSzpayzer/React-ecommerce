@@ -22,10 +22,10 @@ function CartWidget () {
             <div>
                 <div className="btn-group">
                     <button type="button" className="btn btn-secondary dropdown-toggle btnCart" data-bs-toggle="dropdown" aria-expanded="false">
-                    <FontAwesomeIcon icon={faCartShopping} /> ({totalQuantity()})
+                    <FontAwesomeIcon icon={faCartShopping} /> ({totalQuantity})
                     </button>
                     <ul className="dropdown-menu dropdown-menu-end">Carrito de Compras
-                        <li><p>Total de Productos en el Carrito: {totalQuantity()}</p></li>
+                        <li><p>Total de Productos en el Carrito: {totalQuantity}</p></li>
                         {cartProducts.map ( (cartProduct) => {
                             return (
                                 <li key={cartProduct.id}>
