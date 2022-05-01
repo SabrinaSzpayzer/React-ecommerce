@@ -4,6 +4,7 @@ import { useContext, useState } from 'react'
 import CartContext from '../context/CartContext'
 import db from '../utils/firebase'
 import { addDoc, collection } from 'firebase/firestore'
+import './css/Cart.css'
 
 function Cart () {
     const { cartProducts, deleteProduct, clear, totalPrice, totalQuantity } = useContext(CartContext)
@@ -69,23 +70,23 @@ function Cart () {
             <div>
                 <h2>Carrito de Compras</h2>
                 <p>Total de Productos en el Carrito: {totalQuantity}</p>
-                <div>
+                <ul>
                     {cartProducts.map ( (cartProduct) => {
                         return (
                             <li key={cartProduct.id}>
-                                <div>
+                                <div className='cartCard'>
                                     <img className="imgCart" src={`/${cartProduct.image}`} alt={cartProduct.title}></img>
                                     <p>{cartProduct.title}</p>
                                     <p>Precio: $ {cartProduct.price}</p>
                                     <p>Cantidad: {cartProduct.quantity}</p>
-                                    <button className="btn btn-light" onClick={() => deleteProduct(cartProduct)}>Eliminar</button>
+                                    <button className="btn btn-light btnCart" onClick={() => deleteProduct(cartProduct)}>Eliminar</button>
                                 </div>
                             </li> 
                         )
                     })}    
-                </div>
+                </ul>
                 <p>Total: $ {totalPrice}</p>
-                <button className="btn btn-secondary" onClick={() => clear()}>Vaciar Carrito</button>
+                <button className="btn btn-secondary btnCart" onClick={() => clear()}>Vaciar Carrito</button>
                 <div>
                     {successOrder ? (
                         <div>
@@ -111,8 +112,8 @@ function Cart () {
                         </div>                        
                     ) : (
                         <div>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Finalizar Compra
+                            <button type="button" class="btn btn-primary btnCart" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Comprar
                             </button>
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">

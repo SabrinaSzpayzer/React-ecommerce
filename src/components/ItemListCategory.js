@@ -3,6 +3,7 @@ import Item from './Item'
 import {useParams} from 'react-router-dom'
 import {collection, getDocs} from 'firebase/firestore'
 import db from '../utils/firebase'
+import './css/ItemListCategory.css'
 
 function ItemListCategory () {
     const { category } = useParams()
@@ -35,15 +36,17 @@ function ItemListCategory () {
     }
 
     return(
-        <div id="itemListCat">
-            <h2>{category.toUpperCase()}</h2>
-            {products.map( ( product ) => {
-                const {id} = product
+        <div>
+            <h2>{category.charAt(0).toUpperCase()}{category.slice(1)}</h2>
+            <div className="byCard">
+                {products.map( ( product ) => {
+                    const {id} = product
 
-                return(
-                    <Item dataItem={product} key={id}/>
-                )
-            })}
+                    return(
+                        <Item dataItem={product} key={id}/>
+                    )
+                })}
+            </div>
         </div>
     ) 
 }

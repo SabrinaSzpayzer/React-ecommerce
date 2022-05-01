@@ -21,9 +21,10 @@ function NavBar () {
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" to={'/productos'}>Productos</Link>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><Link className="dropdown-item" to={'/productos'}>Ver Todo</Link></li>
                                         <li><Link className="dropdown-item" to={'/productos/velas'}>Velas</Link></li>
                                         <li><Link className="dropdown-item" to={'/productos/difusores'}>Difusores</Link></li>
-                                        <li><Link className="dropdown-item" to={'/productos/promociones'}>Promociones</Link></li>
+                                        <li><Link className="dropdown-item" to={'/productos/promociones'}>Promociones</Link></li>     
                                     </ul>
                                 </li>
                                 <li className="nav-item">

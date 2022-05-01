@@ -24,23 +24,22 @@ function CartWidget () {
                     <button type="button" className="btn btn-secondary dropdown-toggle btnCart" data-bs-toggle="dropdown" aria-expanded="false">
                     <FontAwesomeIcon icon={faCartShopping} /> ({totalQuantity})
                     </button>
-                    <ul className="dropdown-menu dropdown-menu-end">Carrito de Compras
-                        <li><p>Total de Productos en el Carrito: {totalQuantity}</p></li>
+                    <ul className="dropdown-menu dropdown-menu-end cartWidget">Carrito de Compras
                         {cartProducts.map ( (cartProduct) => {
                             return (
                                 <li key={cartProduct.id}>
-                                    <div>
+                                    <div className='cartWidgetCard'>
                                         <img className="imgCart" src={`/${cartProduct.image}`} alt={cartProduct.title}></img>
                                         <p>{cartProduct.title}</p>
                                         <p>Precio: $ {cartProduct.price}</p>
                                         <p>Cantidad: {cartProduct.quantity}</p>
-                                        <button className="btn btn-light" onClick={() => deleteProduct(cartProduct)}>Eliminar</button>
+                                        <button className="btn btn-light btnCartWidget" onClick={() => deleteProduct(cartProduct)}>Eliminar</button>
                                     </div>
                                 </li> 
                             )
                         })}
-                        <li><button className="btn btn-secondary" onClick={() => clear()}>Vaciar Carrito</button></li>
-                        <li><Link to={'/cart'}><button type="button" className="btn btn-secondary" onClick={endPurchase}>Finalizar Compra</button></Link></li>
+                        <li><button className="btn btn-secondary btnCartWidget" onClick={() => clear()}>Vaciar Carrito</button></li>
+                        <li><Link to={'/cart'}><button type="button" className="btn btn-secondary btnCartWidget" onClick={endPurchase}>Finalizar Compra</button></Link></li>
                     </ul>
                 </div>  
             </div>   

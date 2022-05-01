@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Item from './Item'
 import {collection, getDocs} from 'firebase/firestore'
 import db from '../utils/firebase'
+import './css/ItemList.css'
 
 function ItemList () {
     const [products, setProducts] = useState([])
@@ -24,7 +25,7 @@ function ItemList () {
     }, [])
 
     return(
-        <div id="itemList">
+        <div className="byCard">
             {products.map( ( product ) => {
                 const {id} = product
 
