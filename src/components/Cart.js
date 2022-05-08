@@ -4,6 +4,8 @@ import { useContext, useState } from 'react'
 import CartContext from '../context/CartContext'
 import db from '../utils/firebase'
 import { addDoc, collection } from 'firebase/firestore'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import './css/Cart.css'
 
 function Cart () {
@@ -61,8 +63,8 @@ function Cart () {
     if (cartProducts.length == 0) {
         return (
             <div>
-                <p>El Carrito de Compras está vacío.</p>
-                <Link to={'/productos'}><button type="button" className="btn btn-secondary">Ir a Comprar</button></Link>
+                <p className='vacio'>El Carrito de Compras está vacío.</p>
+                <Link to={'/productos'}><button type="button" className="btn btn-secondary btnCart">Ir a Comprar</button></Link>
             </div>   
         )
     } else {
@@ -70,41 +72,41 @@ function Cart () {
             <div>
                 <h2>Carrito de Compras</h2>
                 <p>Total de Productos en el Carrito: {totalQuantity}</p>
-                <ul>
+                <ul className='ulCart'>
                     {cartProducts.map ( (cartProduct) => {
                         return (
                             <li key={cartProduct.id}>
                                 <div className='cartCard'>
                                     <img className="imgCart" src={`/${cartProduct.image}`} alt={cartProduct.title}></img>
                                     <p>{cartProduct.title}</p>
-                                    <p>Precio: $ {cartProduct.price}</p>
+                                    <p>Precio: ${cartProduct.price}</p>
                                     <p>Cantidad: {cartProduct.quantity}</p>
-                                    <button className="btn btn-light btnCart" onClick={() => deleteProduct(cartProduct)}>Eliminar</button>
+                                    <button className="btn btn-light btnCart" onClick={() => deleteProduct(cartProduct)}><FontAwesomeIcon icon={faTrash} /></button>
                                 </div>
                             </li> 
                         )
                     })}    
                 </ul>
-                <p>Total: $ {totalPrice}</p>
+                <p className='totalPrice'>Total: $ {totalPrice}</p>
                 <button className="btn btn-secondary btnCart" onClick={() => clear()}>Vaciar Carrito</button>
                 <div>
                     {successOrder ? (
                         <div>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Finalizar Compra
                             </button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Completar Compra</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div className="modal-dialog">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <h5 className="modal-title" id="exampleModalLabel">Completar Compra</h5>
+                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
-                                            <p>Se completó su orden de compra. Su número de pedido es {successOrder}.</p>
+                                        <div className="modal-body">
+                                            <p>Se completó la orden de compra. El número de pedido es {successOrder}. Nos comunicaremos a la brevedad para coordinar la entrega.</p>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={() => clear()}>Cerrar</button>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => clear()}>Cerrar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -112,35 +114,38 @@ function Cart () {
                         </div>                        
                     ) : (
                         <div>
-                            <button type="button" class="btn btn-primary btnCart" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" className="btn btn-primary btnCart" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Comprar
                             </button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Completar Compra</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div className="modal-dialog">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <h5 className="modal-title" id="exampleModalLabel">Completar Compra</h5>
+                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
-                                            <form onSubmit={handleSubmit}>
-                                                <input type="text" name='name' placeholder='Nombre' 
+                                        <div className="modal-body">
+                                            <form onSubmit={handleSubmit} className="formCompra">
+                                                <input type="text" name='name' placeholder='Nombre' className='inputCompra'
                                                     onChange={handleChange} 
                                                     value={formData.name}
+                                                    required
                                                 />
-                                                <input type="number" name='phone' placeholder='Telefono' 
+                                                <input type="number" name='phone' placeholder='Telefono' className='inputCompra'
                                                     onChange={handleChange} 
                                                     value={formData.phone}
+                                                    required
                                                 />
-                                                <input type="mail" name='email' placeholder='mail' 
+                                                <input type="mail" name='email' placeholder='Mail' className='inputCompra'
                                                     onChange={handleChange} 
                                                     value={formData.email}
+                                                    required
                                                 />
-                                                <button type="submit" class="btn btn-primary">Confirmar Compra</button>        
+                                                <button type="submit" className="btn btn-primary">Confirmar Compra</button>        
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                         </div>
                                     </div>
                                 </div>

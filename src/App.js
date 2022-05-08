@@ -6,6 +6,7 @@ import ItemListContainer from './components/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer'
 import ItemListCategory from './components/ItemListCategory'
 import Cart from './components/Cart'
+import Footer from './components/Footer'
 //pages
 import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
@@ -27,6 +28,7 @@ function App() {
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="*" element={<h1>ERROR 404 - Página no encontrada</h1>}></Route>
           </Routes>
+          <Footer />
         </BrowserRouter>
       </CartProvider>
     </div>

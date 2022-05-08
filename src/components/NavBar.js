@@ -8,7 +8,7 @@ function NavBar () {
         <header>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to={'/'}>Luna | Aromas y Velas</Link>                                       
+                    <Link className="navbar-brand logo" to={'/'}>Aromas Luna</Link>                                       
                     <div className="menuCart">
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@ function NavBar () {
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" to={'/productos'}>Productos</Link>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><Link className="dropdown-item" to={'/productos'}>Ver Todo</Link></li>
+                                        <li><Link className="dropdown-item" to={'/productos'}>Todos</Link></li>
                                         <li><Link className="dropdown-item" to={'/productos/velas'}>Velas</Link></li>
                                         <li><Link className="dropdown-item" to={'/productos/difusores'}>Difusores</Link></li>
                                         <li><Link className="dropdown-item" to={'/productos/promociones'}>Promociones</Link></li>     

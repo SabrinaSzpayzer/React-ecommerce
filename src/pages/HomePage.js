@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 function HomePage () {
     return (
         <div className='homePage container-fluid'>
-            <h2>Bienvenido</h2>
             <div>
                 <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-indicators">

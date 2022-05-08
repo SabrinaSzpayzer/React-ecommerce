@@ -1,0 +1,12 @@
+.formContacto {
+    width: 60%;
+    margin: auto;
+    border: lightgray solid 0.5px;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.btnFormContacto {
+    margin-bottom: 1rem;
+}
