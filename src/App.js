@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 //pages
 import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
+import Error404 from './pages/Error404'
 //context
 import { CartProvider } from './context/CartContext'
  
@@ -26,7 +27,7 @@ function App() {
             <Route path="/productos/:category/:id" element={<ItemDetailContainer />}></Route>
             <Route path="/contacto" element={<ContactPage />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
-            <Route path="*" element={<h1>ERROR 404 - Página no encontrada</h1>}></Route>
+            <Route path="*" element={<Error404 />}></Route>
           </Routes>
           <Footer />
         </BrowserRouter>

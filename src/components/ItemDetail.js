@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import ItemCount from './ItemCount'
 import './css/ItemDetail.css'
 import CartContext from '../context/CartContext'
